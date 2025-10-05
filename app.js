@@ -249,7 +249,7 @@
   const LinksAPI = DEMO_MODE ? LocalLinksAPI() : RestDBLinksAPI(cfg);
 
   function RestDBLinksAPI(cfg) {
-    const base = cfg.baseUrl.replace(/\/$/, "");
+    const base = normalizeRestBase(cfg.baseUrl);
     const coll = (cfg.collections && cfg.collections.links) || "links";
     const headers = {
       "content-type": "application/json",
@@ -274,6 +274,13 @@
         return res.json();
       }
     };
+  }
+
+  function normalizeRestBase(url) {
+    if (!url) return "";
+    const trimmed = url.replace(/\/$/, "");
+    if (/\/rest$/i.test(trimmed)) return trimmed;
+    return `${trimmed}/rest`;
   }
 
   function LocalLinksAPI() {
