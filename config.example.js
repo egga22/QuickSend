@@ -3,9 +3,9 @@
 
 window.RestDBConfig = {
   // Example: https://yourdb-1234.restdb.io/rest
-  baseUrl: "https://YOURDB.restdb.io/rest",
+  baseUrl: "https://quicklinksend-5db7.restdb.io",
   // Generate an API key in your restdb.io dashboard
-  apiKey: "YOUR_RESTDB_API_KEY",
+  apiKey: "68e2ca3f7f34ed4e51200a2a",
   collections: {
     links: "links" // Name of the collection to store links
   }
