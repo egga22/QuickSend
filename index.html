@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quick Link Send</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Share links instantly via a room URL." />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <h1 class="logo">Quick Link Send</h1>
+        <button id="copyLinkBtn" class="btn btn-secondary" title="Copy room link" hidden>Copy Room Link</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Landing (Create/Join) -->
+      <section id="landing" class="card" hidden>
+        <h2>Start or Join a Room</h2>
+        <div class="grid two">
+          <div class="stack">
+            <h3>Create</h3>
+            <p>Create a new room and share the link.</p>
+            <button id="createRoomBtn" class="btn btn-primary">Create Room</button>
+          </div>
+          <div class="stack">
+            <h3>Join</h3>
+            <label for="joinRoomInput" class="label">Room Code</label>
+            <input id="joinRoomInput" class="input" type="text" placeholder="e.g. sunny-fox-7f2" />
+            <button id="joinRoomBtn" class="btn btn-primary">Join Room</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Room UI -->
+      <section id="room" class="card" hidden>
+        <div class="room-header">
+          <div class="room-meta">
+            <span class="label">Room</span>
+            <strong id="roomCode"></strong>
+          </div>
+          <div class="name-field">
+            <label for="displayName" class="label">Your name</label>
+            <input id="displayName" class="input" type="text" placeholder="Optional" maxlength="40" />
+          </div>
+        </div>
+
+        <div class="send-box">
+          <label for="urlInput" class="label">Link to send</label>
+          <div class="send-row">
+            <input id="urlInput" class="input flex" type="url" placeholder="https://example.com" />
+            <button id="sendBtn" class="btn btn-primary">Send</button>
+          </div>
+          <div id="error" class="error" role="alert" hidden></div>
+        </div>
+
+        <div class="list-header">
+          <h3>Recent Links</h3>
+          <button id="refreshBtn" class="btn btn-secondary">Refresh</button>
+        </div>
+
+        <ul id="linksList" class="links"></ul>
+      </section>
+
+      <section id="configWarning" class="card warn" hidden>
+        <strong>Heads up:</strong> RESTDB is not configured. Running in local demo mode.
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>Built for quick link sharing. Configure RESTDB in <code>config.js</code>.</small>
+      </div>
+    </footer>
+
+    <!-- Config: copy config.example.js to config.js and edit -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+  </html>
+
